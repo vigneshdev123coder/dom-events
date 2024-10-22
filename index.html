@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      #container {
+        padding: 20px;
+        border: 1px solid black;
+        display: inline-block;
+      }
+      #quote {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <p id="otp">OTP</p>
+        <p id="quote">Quote:</p>
+        <button id="generate" style="height: 30px;">Generate OTP</button>
+      </div>
+  
+      <script>
+        function generateOTP() {
+          return Math.floor(10000 + Math.random() * 90000);
+        }
+  
+        function getRandomColor() {
+          const letters = "0123456789ABCDEF";
+          let color = "#";
+          for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 14)];
+          }
+          return color;
+        }
+  
+        const quotes = [
+          "The best way to predict the future is to invent it.",
+          "Life is what happens when you’re busy making other plans.",
+          "Do what you can, with what you have, where you are.",
+          "You miss 100% of the shots you don’t take.",
+          "Be yourself; everyone else is already taken.",
+        ];
+  
+        function getRandomQuote() {
+          return quotes[Math.floor(Math.random() * quotes.length)];
+        }
+  
+        document
+          .getElementById("generate")
+          .addEventListener("click", function () {
+            const otp = generateOTP();
+            document.getElementById("otp").innerHTML =  otp;
+  
+            const randomQuote = getRandomQuote();
+            document.getElementById("quote").textContent =
+              "Quote: " + randomQuote;
+  
+            // Change background color
+            document.body.style.backgroundColor = getRandomColor();
+          });
+  
+        
+        document
+          .getElementById("generate")
+          .addEventListener("mouseover", function () {
+            this.style.backgroundColor = getRandomColor();
+          });
+  
+     
+      </script>
+</body>
+</html>
